@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Character Counter — Zunio</title>
+
+    <meta name="description"
+          content="Count characters and words instantly with Zunio's free character counter. Useful for captions, bios, posts, and messages.">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <a href="../index.html" class="logo">
+            Zu<span>nio</span>
+        </a>
+
+        <nav>
+            <a href="../index.html#calculate">Calculate</a>
+            <a href="../index.html#understand">Understand</a>
+            <a href="../index.html#create">Create</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <article class="article">
+
+            <h1>Character Counter</h1>
+
+            <p>
+                Type or paste your text below to instantly count
+                characters and words.
+            </p>
+
+
+            <div class="tool">
+
+                <label for="textInput">
+                    Enter your text
+                </label>
+
+                <textarea
+                    id="textInput"
+                    rows="10"
+                    placeholder="Type or paste your text here..."
+                ></textarea>
+
+                <div class="result">
+
+                    <p>
+                        <strong>Characters:</strong>
+                        <span id="charCount">0</span>
+                    </p>
+
+                    <p>
+                        <strong>Words:</strong>
+                        <span id="wordCount">0</span>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <h2>What is a character counter?</h2>
+
+            <p>
+                A character counter tells you how many characters
+                are contained in a piece of text. This can be useful
+                when writing social media captions, bios, messages,
+                applications, and other text with length limits.
+            </p>
+
+
+            <h2>How to use it</h2>
+
+            <p>
+                Type or paste your text into the box above. Zunio
+                automatically counts the characters and words as
+                you type.
+            </p>
+
+        </article>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Zunio. Free everyday tools.
+    </p>
+
+    <p>
+
+        <a href="../about.html">About</a>
+
+        <a href="../contact.html">Contact</a>
+
+        <a href="../privacy.html">Privacy</a>
+
+        <a href="../terms.html">Terms</a>
+
+    </p>
+
+</footer>
+
+
+<script>
+
+const textInput =
+    document.getElementById("textInput");
+
+const charCount =
+    document.getElementById("charCount");
+
+const wordCount =
+    document.getElementById("wordCount");
+
+
+textInput.addEventListener("input", function() {
+
+    const text = textInput.value;
+
+    charCount.textContent =
+        text.length;
+
+    const words =
+        text.trim()
+            ? text.trim().split(/\s+/).length
+            : 0;
+
+    wordCount.textContent =
+        words;
+
+});
+
+</script>
+
+</body>
+
+</html>
