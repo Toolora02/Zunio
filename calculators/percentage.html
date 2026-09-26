@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Percentage Calculator — Zunio</title>
+
+    <meta name="description"
+          content="Free percentage calculator. Calculate percentages quickly and easily with Zunio.">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <a href="../index.html" class="logo">
+            Zu<span>nio</span>
+        </a>
+
+        <nav>
+            <a href="../index.html#calculate">Calculate</a>
+            <a href="../index.html#understand">Understand</a>
+            <a href="../index.html#create">Create</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <section class="tool">
+
+            <h1>Percentage Calculator</h1>
+
+            <p>
+                Calculate what percentage one number is of another.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="number">
+                    What is
+                </label>
+
+                <input
+                    type="number"
+                    id="number"
+                    placeholder="e.g. 25">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="total">
+                    out of
+                </label>
+
+                <input
+                    type="number"
+                    id="total"
+                    placeholder="e.g. 100">
+
+            </div>
+
+
+            <button onclick="calculatePercentage()">
+                Calculate
+            </button>
+
+
+            <div
+                id="result"
+                class="result"
+                style="display: none;">
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Zunio. Free everyday tools.
+    </p>
+
+    <p>
+
+        <a href="../about.html">
+            About
+        </a>
+
+        <a href="../contact.html">
+            Contact
+        </a>
+
+        <a href="../privacy.html">
+            Privacy
+        </a>
+
+        <a href="../terms.html">
+            Terms
+        </a>
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function calculatePercentage() {
+
+    const number =
+        parseFloat(document.getElementById("number").value);
+
+    const total =
+        parseFloat(document.getElementById("total").value);
+
+    const result =
+        document.getElementById("result");
+
+
+    if (isNaN(number) || isNaN(total)) {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "Please enter both numbers.";
+
+        return;
+    }
+
+
+    if (total === 0) {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "The second number cannot be zero.";
+
+        return;
+    }
+
+
+    const percentage =
+        (number / total) * 100;
+
+
+    result.style.display = "block";
+
+    result.textContent =
+        number + " is " +
+        percentage.toFixed(2) +
+        "% of " +
+        total + ".";
+}
+
+</script>
+
+</body>
+
+</html>
