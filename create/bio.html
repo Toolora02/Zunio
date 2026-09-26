@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Instagram Bio Generator — Zunio</title>
+
+    <meta name="description"
+          content="Generate Instagram bio ideas with Zunio. Create simple, aesthetic, funny, and stylish bio ideas for your social media profile.">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <a href="../index.html" class="logo">
+            Zu<span>nio</span>
+        </a>
+
+        <nav>
+            <a href="../index.html#calculate">Calculate</a>
+            <a href="../index.html#understand">Understand</a>
+            <a href="../index.html#create">Create</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <article class="article">
+
+            <h1>Instagram Bio Generator</h1>
+
+            <p>
+                Enter a word, name, interest, or vibe and get
+                Instagram bio ideas you can customize for your
+                profile.
+            </p>
+
+
+            <div class="tool">
+
+                <label for="bioInput">
+                    Enter a word or vibe
+                </label>
+
+                <input
+                    type="text"
+                    id="bioInput"
+                    placeholder="e.g. mysterious"
+                >
+
+                <button onclick="generateBio()">
+                    Generate Bio
+                </button>
+
+                <div class="result" id="bioOutput">
+                    Your bio ideas will appear here.
+                </div>
+
+            </div>
+
+
+            <h2>How to use the bio generator</h2>
+
+            <p>
+                Enter a word, interest, personality, or vibe and
+                tap the generate button. You can then copy an idea
+                and customize it for your profile.
+            </p>
+
+
+            <h2>Instagram bio ideas</h2>
+
+            <p>
+                Keep your bio short, memorable, and personal. You
+                can use emojis, interests, hobbies, or a short
+                phrase that represents your personality.
+            </p>
+
+        </article>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Zunio. Free everyday tools.
+    </p>
+
+    <p>
+
+        <a href="../about.html">About</a>
+
+        <a href="../contact.html">Contact</a>
+
+        <a href="../privacy.html">Privacy</a>
+
+        <a href="../terms.html">Terms</a>
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function generateBio() {
+
+    const input =
+        document.getElementById("bioInput").value.trim();
+
+    const output =
+        document.getElementById("bioOutput");
+
+    if (!input) {
+
+        output.innerHTML =
+            "Please enter a word or vibe first.";
+
+        return;
+    }
+
+    const vibe =
+        input.toLowerCase();
+
+    const ideas = [
+
+        "just here for the " + vibe + " ✨",
+
+        "living life in my " + vibe + " era 🖤",
+
+        "a little " + vibe + ", a little chaos ✦",
+
+        "made of dreams & " + vibe + " energy",
+
+        "keeping it " + vibe + " 🌙",
+
+        "currently: " + vibe + " mode.",
+
+        "creating my own kind of " + vibe + " ✨"
+
+    ];
+
+    output.innerHTML =
+        ideas.map(function(bio) {
+            return "<p>" + bio + "</p>";
+        }).join("");
+
+}
+
+</script>
+
+</body>
+
+</html>
