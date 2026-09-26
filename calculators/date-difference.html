@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Date Difference Calculator — Zunio</title>
+
+    <meta name="description"
+          content="Free date difference calculator. Find the number of days between two dates with Zunio.">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <a href="../index.html" class="logo">
+            Zu<span>nio</span>
+        </a>
+
+        <nav>
+            <a href="../index.html#calculate">Calculate</a>
+            <a href="../index.html#understand">Understand</a>
+            <a href="../index.html#create">Create</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <section class="tool">
+
+            <h1>Date Difference Calculator</h1>
+
+            <p>
+                Find the number of days between two dates.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="startDate">
+                    Start Date
+                </label>
+
+                <input type="date" id="startDate">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="endDate">
+                    End Date
+                </label>
+
+                <input type="date" id="endDate">
+
+            </div>
+
+
+            <button onclick="calculateDifference()">
+                Calculate
+            </button>
+
+
+            <div id="result"
+                 class="result"
+                 style="display: none;">
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Zunio. Free everyday tools.
+    </p>
+
+    <p>
+
+        <a href="../about.html">About</a>
+
+        <a href="../contact.html">Contact</a>
+
+        <a href="../privacy.html">Privacy</a>
+
+        <a href="../terms.html">Terms</a>
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function calculateDifference() {
+
+    const startInput =
+        document.getElementById("startDate").value;
+
+    const endInput =
+        document.getElementById("endDate").value;
+
+    const result =
+        document.getElementById("result");
+
+
+    if (startInput === "" || endInput === "") {
+
+        result.style.display = "block";
+
+        result.textContent =
+            "Please select both dates.";
+
+        return;
+    }
+
+
+    const startParts =
+        startInput.split("-").map(Number);
+
+    const endParts =
+        endInput.split("-").map(Number);
+
+
+    const startDate =
+        Date.UTC(
+            startParts[0],
+            startParts[1] - 1,
+            startParts[2]
+        );
+
+    const endDate =
+        Date.UTC(
+            endParts[0],
+            endParts[1] - 1,
+            endParts[2]
+        );
+
+
+    const difference =
+        Math.abs(endDate - startDate);
+
+
+    const days =
+        Math.round(
+            difference / 86400000
+        );
+
+
+    result.style.display = "block";
+
+
+    if (days === 0) {
+
+        result.textContent =
+            "Both dates are the same.";
+
+    } else {
+
+        result.textContent =
+            "The difference is " +
+            days +
+            " day" +
+            (days === 1 ? "" : "s") +
+            ".";
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
