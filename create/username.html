@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Instagram Username Ideas — Zunio</title>
+
+    <meta name="description"
+          content="Generate Instagram username ideas using Zunio. Get simple, aesthetic, unique, and social-media-friendly username ideas.">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <a href="../index.html" class="logo">
+            Zu<span>nio</span>
+        </a>
+
+        <nav>
+            <a href="../index.html#calculate">Calculate</a>
+            <a href="../index.html#understand">Understand</a>
+            <a href="../index.html#create">Create</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <article class="article">
+
+            <h1>Instagram Username Ideas</h1>
+
+            <p>
+                Enter a word, name, nickname, or interest and get
+                simple username ideas you can use for Instagram
+                and other social platforms.
+            </p>
+
+
+            <div class="tool">
+
+                <label for="usernameInput">
+                    Enter a word or name
+                </label>
+
+                <input
+                    type="text"
+                    id="usernameInput"
+                    placeholder="e.g. luna"
+                >
+
+                <button onclick="generateUsernames()">
+                    Generate Ideas
+                </button>
+
+                <div class="result" id="usernameOutput">
+                    Your username ideas will appear here.
+                </div>
+
+            </div>
+
+
+            <h2>Username ideas for Instagram</h2>
+
+            <p>
+                A good username can be simple, memorable, and easy
+                to type. Try using a nickname, a favorite word, an
+                interest, or a combination of words.
+            </p>
+
+
+            <h2>How to use the generator</h2>
+
+            <p>
+                Enter a word or name above and tap the generate
+                button. Zunio will create several username
+                combinations based on your input.
+            </p>
+
+        </article>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Zunio. Free everyday tools.
+    </p>
+
+    <p>
+
+        <a href="../about.html">About</a>
+
+        <a href="../contact.html">Contact</a>
+
+        <a href="../privacy.html">Privacy</a>
+
+        <a href="../terms.html">Terms</a>
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function generateUsernames() {
+
+    const input =
+        document.getElementById("usernameInput").value.trim();
+
+    const output =
+        document.getElementById("usernameOutput");
+
+    if (!input) {
+
+        output.innerHTML =
+            "Please enter a word or name first.";
+
+        return;
+    }
+
+    const word =
+        input.toLowerCase().replace(/\s+/g, "");
+
+    const ideas = [
+
+        word + "xo",
+        "its" + word,
+        "hey" + word,
+        "the" + word,
+        word + "vibes",
+        word + "core",
+        word + "era",
+        word + "zone",
+        word + "verse",
+        "real" + word,
+        word + "_x",
+        word + "._",
+        "_" + word,
+        word + "01"
+
+    ];
+
+    output.innerHTML =
+        ideas.map(function(username) {
+            return "<p><strong>@" + username + "</strong></p>";
+        }).join("");
+
+}
+
+</script>
+
+</body>
+
+</html>
