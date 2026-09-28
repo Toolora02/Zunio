@@ -273,7 +273,52 @@ if (fancyInput && fancyOutput) {
 
             const converted = style.convert(text);
 
-            createStyleCard(
+            function createStyleCard(name, text) {
+
+    const card = document.createElement("div");
+    card.className = "fancy-style";
+
+    const title = document.createElement("strong");
+    title.textContent = name;
+
+    const result = document.createElement("div");
+    result.className = "fancy-style-text";
+    result.textContent = text;
+    result.title = "Tap to copy";
+
+    const hint = document.createElement("small");
+    hint.textContent = "Tap to copy";
+
+    result.addEventListener("click", async function () {
+
+        try {
+
+            await navigator.clipboard.writeText(text);
+
+            hint.textContent = "✓ Copied!";
+
+            setTimeout(() => {
+                hint.textContent = "Tap to copy";
+            }, 1500);
+
+        } catch (error) {
+
+            hint.textContent = "Copy failed";
+
+            setTimeout(() => {
+                hint.textContent = "Tap to copy";
+            }, 1500);
+
+        }
+
+    });
+
+    card.appendChild(title);
+    card.appendChild(result);
+    card.appendChild(hint);
+
+    fancyOutput.appendChild(card);
+            }
                 style.name,
                 converted
             );
