@@ -114,7 +114,139 @@
 </footer>
 
 
-<script src="../script.js?v=2"></script>
+<script>
+const fancyInput = document.getElementById("fancyInput");
+const fancyOutput = document.getElementById("fancyOutput");
+
+function convertUnicode(text, upperStart, lowerStart) {
+    return text.split("").map(char => {
+        const code = char.charCodeAt(0);
+
+        if (code >= 65 && code <= 90) {
+            return String.fromCodePoint(upperStart + code - 65);
+        }
+
+        if (code >= 97 && code <= 122) {
+            return String.fromCodePoint(lowerStart + code - 97);
+        }
+
+        return char;
+    }).join("");
+}
+
+function circleText(text) {
+    return text.split("").map(char => {
+        const code = char.toUpperCase().charCodeAt(0);
+
+        if (code >= 65 && code <= 90) {
+            return String.fromCodePoint(0x24B6 + code - 65);
+        }
+
+        return char;
+    }).join("");
+}
+
+function fullWidthText(text) {
+    return text.split("").map(char => {
+        const code = char.charCodeAt(0);
+
+        if (code >= 33 && code <= 126) {
+            return String.fromCharCode(code + 0xFEE0);
+        }
+
+        if (char === " ") {
+            return "　";
+        }
+
+        return char;
+    }).join("");
+}
+
+function smallCapsText(text) {
+    const caps = {
+        a:"ᴀ",b:"ʙ",c:"ᴄ",d:"ᴅ",e:"ᴇ",f:"ғ",g:"ɢ",
+        h:"ʜ",i:"ɪ",j:"ᴊ",k:"ᴋ",l:"ʟ",m:"ᴍ",n:"ɴ",
+        o:"ᴏ",p:"ᴘ",q:"ǫ",r:"ʀ",s:"s",t:"ᴛ",u:"ᴜ",
+        v:"ᴠ",w:"ᴡ",x:"x",y:"ʏ",z:"ᴢ"
+    };
+
+    return text.split("").map(char =>
+        caps[char.toLowerCase()] || char
+    ).join("");
+}
+
+function strikethroughText(text) {
+    return text.split("").map(char => char + "\u0336").join("");
+}
+
+function underlineText(text) {
+    return text.split("").map(char => char + "\u0332").join("");
+}
+
+const styles = [
+    ["Bold", text => convertUnicode(text, 0x1D400, 0x1D41A)],
+    ["Italic", text => convertUnicode(text, 0x1D434, 0x1D44E)],
+    ["Bold Italic", text => convertUnicode(text, 0x1D468, 0x1D482)],
+    ["Sans", text => convertUnicode(text, 0x1D5A0, 0x1D5BA)],
+    ["Sans Bold", text => convertUnicode(text, 0x1D5D4, 0x1D5EE)],
+    ["Monospace", text => convertUnicode(text, 0x1D670, 0x1D68A)],
+    ["Double Struck", text => convertUnicode(text, 0x1D538, 0x1D552)],
+    ["Fraktur", text => convertUnicode(text, 0x1D504, 0x1D51E)],
+    ["Bold Fraktur", text => convertUnicode(text, 0x1D56C, 0x1D586)],
+    ["Circled", circleText],
+    ["Fullwidth", fullWidthText],
+    ["Small Caps", smallCapsText],
+    ["Strikethrough", strikethroughText],
+    ["Underline", underlineText]
+];
+
+fancyInput.addEventListener("input", function () {
+    const text = this.value;
+
+    fancyOutput.innerHTML = "";
+
+    if (!text) {
+        fancyOutput.innerHTML =
+            "<p>Your fancy text will appear here.</p>";
+        return;
+    }
+
+    styles.forEach(([name, convert]) => {
+        const card = document.createElement("div");
+        card.className = "fancy-style";
+
+        const title = document.createElement("strong");
+        title.textContent = name;
+
+        const result = document.createElement("div");
+        result.className = "fancy-style-text";
+        result.textContent = convert(text);
+        result.title = "Tap to copy";
+
+        const hint = document.createElement("small");
+        hint.textContent = "Tap to copy";
+
+        result.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(result.textContent);
+                hint.textContent = "✓ Copied!";
+
+                setTimeout(() => {
+                    hint.textContent = "Tap to copy";
+                }, 1500);
+            } catch {
+                hint.textContent = "Copy failed";
+            }
+        });
+
+        card.appendChild(title);
+        card.appendChild(result);
+        card.appendChild(hint);
+
+        fancyOutput.appendChild(card);
+    });
+});
+</script>
 
 </body>
 </html>
