@@ -300,3 +300,15 @@ footer a {
     }
 
 }
+/* whatever your existing CSS is... */
+
+
+/* Fancy text generator */
+
+.fancy-style {
+    padding: 16px;
+    margin: 12px 0;
+    border-radius: 12px;
+}
+
+/* rest of the code... */
