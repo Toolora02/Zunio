@@ -312,3 +312,37 @@ footer a {
 }
 
 /* rest of the code... */
+/* Fancy text generator */
+
+.fancy-style {
+    padding: 14px 0;
+    margin: 10px 0;
+}
+
+.fancy-style strong {
+    display: block;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    opacity: 0.45;
+    margin-bottom: 6px;
+}
+
+.fancy-style-text {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+.fancy-style-text:hover {
+    opacity: 0.8;
+}
+
+.fancy-style small {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    opacity: 0.35;
+}
